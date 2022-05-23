@@ -1,5 +1,13 @@
-const ADD_PRODUCT = 'ADD_PRODUCT';
+const getSelectedProducts = () => {
+    return JSON.parse(localStorage.getItem('selectedProducts'));
+}
 
-const addProduct = (product) => {
-    return {type: ADD_PRODUCT, payload: product}
-};
+const updateProducts = (state, payload) => {
+    localStorage.setItem('selectedProducts', JSON.stringify([...state, payload.payload]));
+    return [...state, payload.payload]
+}
+
+export {
+    getSelectedProducts,
+    updateProducts
+}
