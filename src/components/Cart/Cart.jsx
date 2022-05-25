@@ -6,7 +6,6 @@ import './cart.css';
 const Cart = () => {
 
   const selectedProducts = useSelector((state) => state.SelectedProductsSlice);
-  console.log(selectedProducts)
 
   return (
     <section className="section-cart">
