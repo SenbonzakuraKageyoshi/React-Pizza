@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import Logo from '../../images/logo/logo.svg';
 import {Link} from 'react-router-dom'
 import { useSelector } from 'react-redux';
@@ -6,10 +6,24 @@ import './header.css'
 
 const Header = () => {
 
-    let selectedProductsNumber = useSelector((state) => state.SelectedProductsSlice.length);
+    const selectedProducts = useSelector((state) => state.SelectedProductsSlice);
 
-    if(selectedProductsNumber === 0 && JSON.parse(localStorage.getItem('selectedProducts'))){
-        selectedProductsNumber = JSON.parse(localStorage.getItem('selectedProducts')).length
+    let length = useMemo(() => {
+        return selectedProducts.length;
+    });
+  
+    const sum = useMemo(() => {
+        if(JSON.parse(localStorage.getItem('selectedProducts'))){
+            return JSON.parse(localStorage.getItem('selectedProducts')).reduce(function (accumulator, currentValue) {
+                return accumulator + currentValue.productPrice;
+            }, 0)
+        }else{
+            return 0;
+        }
+    })
+
+    if(selectedProducts.length === 0 && JSON.parse(localStorage.getItem('selectedProducts'))){
+        length = JSON.parse(localStorage.getItem('selectedProducts')).length
     }
 
   return (
@@ -27,8 +41,8 @@ const Header = () => {
                 </div>
                 <div className="header__actions">
                     <Link to="/cart" className="header__actions-item">
-                        <span className="total-price">0 Р</span>
-                        <span className="cart-item-value">{selectedProductsNumber ? selectedProductsNumber : 0}</span>
+                        <span className="total-price">{sum} Р</span>
+                        <span className="cart-item-value">{selectedProducts ? length : 0}</span>
                     </Link>
                 </div>
             </div>

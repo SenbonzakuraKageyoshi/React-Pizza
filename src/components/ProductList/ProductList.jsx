@@ -15,7 +15,7 @@ const ProductList = () => {
   return (
     <ul className="product__list">
         {products.map((product) => (
-            <ProductListItem key={product.id} id={product.id} productName={product.productName} productPrice={product.productPrice} productImg={product.img}/>
+            <ProductListItem key={product.id} id={product.id} defaultPrice={product.defaultPrice} productName={product.productName} productPrice={product.productPrice} productImg={product.img}/>
         ))}
     </ul>
   )

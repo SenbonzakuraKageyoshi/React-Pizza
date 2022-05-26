@@ -1,7 +1,7 @@
 import React from 'react';
 import './cart-list-item.css';
 import { useDispatch } from 'react-redux';
-import { addNumber } from '../../store/SelectedProducts/SelectedProductsSlice';
+import { addNumber, removeNumber, deleteProduct } from '../../store/SelectedProducts/SelectedProductsSlice';
 
 const CartListItem = ({id, productName, productPrice, productImg, options, productNumber}) => {
 
@@ -16,12 +16,12 @@ const CartListItem = ({id, productName, productPrice, productImg, options, produ
           <h2 className="cart__list-item-params">{options.type} тесто, {options.size}.</h2>
         </div>
         <div className="cart__list-item-quantity">
-          <button className="remove-quantity-value"></button>
+          <button className="remove-quantity-value" onClick={() => dispatch(removeNumber(id))}></button>
           <div className="quantity-value">{productNumber}</div>
           <button className="add-quantity-value" onClick={() => dispatch(addNumber(id))}></button>
         </div>
         <div className="price-value">{productPrice} Р</div>
-        <button className="remove-cart-item"></button>
+        <button className="remove-cart-item" onClick={() => dispatch(deleteProduct(id))}></button>
       </div>
     </li>
   )

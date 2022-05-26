@@ -81,6 +81,11 @@
     position: relative;
 }
 
+.header .total-price{
+    color: #fff;
+    font-size: 16px;
+}
+
 .header:before{
     content: '';
     width: 100%;

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addProduct } from '../../store/SelectedProducts/SelectedProductsSlice';
 import './product-list-item.css'
 
-const ProductListItem = ({id, productName, productPrice, productImg}) => {
+const ProductListItem = ({id, productName, defaultPrice, productPrice, productImg}) => {
   const dispatch = useDispatch();
 
   let options = {type: 'тонкое', size: 25};
@@ -27,7 +27,7 @@ const ProductListItem = ({id, productName, productPrice, productImg}) => {
         <ProductOptions optionsClickHandler={optionsClickHandler}/>
         <div className="product__footer">
             <div className="product-price">{productPrice} Р</div>
-            <button className="add-product" onClick={() => dispatch(addProduct({id, productName, productPrice, productImg, options, number: 0}))}>Добавить <span className="product-addded-value"></span></button>
+            <button className="add-product" onClick={() => dispatch(addProduct({id, productName, defaultPrice, productPrice, productImg, options, number: 1}))}>Добавить <span className="product-addded-value"></span></button>
         </div>
     </li>
   )
