@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import { setProducts } from '../../store/SelectedProducts/SelectedProductsSlice';
 import ProductList from '../ProductList/ProductList';
 import './catalog.css'
 
 const Catalog = () => {
+
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(setProducts())
+  }, [])
+
   return (
     <section className="section-catalog">
         <div className="container">

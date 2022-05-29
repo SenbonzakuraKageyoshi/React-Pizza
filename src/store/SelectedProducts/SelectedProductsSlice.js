@@ -11,7 +11,7 @@ const selectedProductsSlice = createSlice({
             return getSelectedProducts();
         },
         addProduct: (state, action) => {
-            return updateProducts(state, action);
+            return updateProducts(state, action.payload);
         },
         addNumber: (state, action) => {
             return addPriceAndNumber(action.payload)

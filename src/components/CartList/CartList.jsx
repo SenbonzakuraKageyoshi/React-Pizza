@@ -10,7 +10,7 @@ const CartList = () => {
   return (
     <ul className="cart__list">
       {selectedProducts.map((selectedProduct) => (
-        <CartListItem key={selectedProduct.id} sizes={selectedProduct.sizes} id={selectedProduct.id} options={selectedProduct.options} productNumber={selectedProduct.number} productName={selectedProduct.productName} productPrice={selectedProduct.defaultPrice} productImg={selectedProduct.productImg}/>
+        <CartListItem key={selectedProduct.id} types={selectedProduct.types} sizes={selectedProduct.sizes} id={selectedProduct.id} options={selectedProduct.options} productNumber={selectedProduct.number} productName={selectedProduct.productName} productPrice={selectedProduct.defaultPrice} productImg={selectedProduct.productImg}/>
       ))}
     </ul>
   )

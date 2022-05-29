@@ -11,14 +11,15 @@ const getSelectedProducts = () => {
 };
 
 const updateProducts = (state, payload) => {
-    saveToLocalStorage([...state, payload.payload])
-    return [...state, payload.payload]
+    payload.productPrice = payload.defaultPrice;
+    saveToLocalStorage([...state, payload])
+    return [...state, payload]
 };
 
 const addPriceAndNumber = (id) => {
     const arr = JSON.parse(localStorage.getItem('selectedProducts'));
     arr[arr.findIndex((item) => item.id === id)].number++;
-    arr[arr.findIndex((item) => item.id === id)].defaultPrice = arr[arr.findIndex((item) => item.id === id)].defaultPrice + arr[arr.findIndex((item) => item.id === id)].defaultPrice;
+    arr[arr.findIndex((item) => item.id === id)].defaultPrice = arr[arr.findIndex((item) => item.id === id)].productPrice * arr[arr.findIndex((item) => item.id === id)].number;
     localStorage.setItem('selectedProducts', JSON.stringify([...arr]))
     return [...arr]
 };
@@ -26,7 +27,7 @@ const addPriceAndNumber = (id) => {
 const removePriceAndNumber = (id) => {
     const arr = JSON.parse(localStorage.getItem('selectedProducts'));
     arr[arr.findIndex((item) => item.id === id)].number--;
-    arr[arr.findIndex((item) => item.id === id)].defaultPrice = arr[arr.findIndex((item) => item.id === id)].defaultPrice - arr[arr.findIndex((item) => item.id === id)].defaultPrice;
+    arr[arr.findIndex((item) => item.id === id)].defaultPrice = arr[arr.findIndex((item) => item.id === id)].productPrice * arr[arr.findIndex((item) => item.id === id)].number;
     saveToLocalStorage([...arr])
     return [...arr]
 };

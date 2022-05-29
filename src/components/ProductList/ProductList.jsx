@@ -13,11 +13,10 @@ const ProductList = () => {
       service.getProducts().then((res) => setProducts(res))
     }, [])
 
-    console.log(products)
   return (
     <ul className="product__list">
         {products.map((product) => (
-            <ProductListItem products={products} sizes={product.sizes} setProducts={setProducts} key={product.id} id={product.id} defaultPrice={product.defaultPrice} productName={product.productName} productPrice={product.productPrice} productImg={product.img}/>
+            <ProductListItem products={products} types={product.types} sizes={product.sizes} setProducts={setProducts} key={product.id} id={product.id} defaultPrice={product.defaultPrice} productName={product.productName} productPrice={product.productPrice} productImg={product.img}/>
         ))}
     </ul>
   )
