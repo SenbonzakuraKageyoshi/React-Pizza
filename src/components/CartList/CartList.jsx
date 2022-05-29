@@ -1,23 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import CartListItem from '../CartListItem/CartListItem';
-import {useSelector, useDispatch} from 'react-redux';
-import { setProducts } from '../../store/SelectedProducts/SelectedProductsSlice';
+import {useSelector} from 'react-redux';
 import './cart-list.css';
 
 const CartList = () => {
 
   const selectedProducts = useSelector((state) => state.SelectedProductsSlice);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setProducts())
-  }, [])
-
 
   return (
     <ul className="cart__list">
       {selectedProducts.map((selectedProduct) => (
-        <CartListItem key={selectedProduct.id} id={selectedProduct.id} options={selectedProduct.options} productNumber={selectedProduct.number} productName={selectedProduct.productName} productPrice={selectedProduct.productPrice} productImg={selectedProduct.productImg}/>
+        <CartListItem key={selectedProduct.id} sizes={selectedProduct.sizes} id={selectedProduct.id} options={selectedProduct.options} productNumber={selectedProduct.number} productName={selectedProduct.productName} productPrice={selectedProduct.defaultPrice} productImg={selectedProduct.productImg}/>
       ))}
     </ul>
   )

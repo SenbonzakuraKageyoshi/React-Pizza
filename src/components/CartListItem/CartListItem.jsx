@@ -3,7 +3,7 @@ import './cart-list-item.css';
 import { useDispatch } from 'react-redux';
 import { addNumber, removeNumber, deleteProduct } from '../../store/SelectedProducts/SelectedProductsSlice';
 
-const CartListItem = ({id, productName, productPrice, productImg, options, productNumber}) => {
+const CartListItem = ({id, productName, productPrice, productImg, productNumber, sizes}) => {
 
   const dispatch = useDispatch()
 
@@ -13,7 +13,7 @@ const CartListItem = ({id, productName, productPrice, productImg, options, produ
       <div className="cart__list-item__main">
         <div className="cart__list-item-descr">
           <h1 className="cart__list-item-name">{productName}</h1>
-          <h2 className="cart__list-item-params">{options.type} тесто, {options.size}.</h2>
+          <h2 className="cart__list-item-params">{sizes[sizes.findIndex((size) => size.default === true)].sizeValue} см</h2>
         </div>
         <div className="cart__list-item-quantity">
           <button className="remove-quantity-value" onClick={() => dispatch(removeNumber(id))}></button>

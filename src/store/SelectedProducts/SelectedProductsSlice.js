@@ -19,10 +19,10 @@ const selectedProductsSlice = createSlice({
         removeNumber: (state, action) => {
             return removePriceAndNumber(action.payload)
         },
-        deleteProduct : (state, action) => {
-            return removeProduct(action.payload)
+        deleteProduct: (state, action) => {
+            return removeProduct(action.payload);
         },
-        clearCart: (state, action) => {
+        clearCart: () => {
             return removeSelectedProducts();
         }
     }

@@ -1,7 +1,8 @@
-import React, {useMemo} from 'react';
+import React, {useEffect} from 'react';
 import {Link} from'react-router-dom'
-import {useSelector ,useDispatch} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import { clearCart } from '../../store/SelectedProducts/SelectedProductsSlice';
+import { setProducts } from '../../store/SelectedProducts/SelectedProductsSlice';
 import CartList from '../CartList/CartList';
 import EmptyCart from '../../images/cart/empty-cart.svg'
 import './cart.css';
@@ -9,17 +10,18 @@ import './cart.css';
 const Cart = () => {
 
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setProducts())
+  }, [])
+
   const selectedProducts = useSelector((state) => state.SelectedProductsSlice)
+  const length = selectedProducts.length;
 
-  const length = useMemo(() => {
-    return selectedProducts.length;
-  });
-
-  const sum = useMemo(() => {
-    return selectedProducts.reduce(function (accumulator, currentValue) {
-      return accumulator + currentValue.productPrice;
+  const sum = selectedProducts.reduce(function (accumulator, currentValue) {
+      return accumulator + currentValue.defaultPrice;
     }, 0)
-  })
+  
 
   return (
     <section className="section-cart">
