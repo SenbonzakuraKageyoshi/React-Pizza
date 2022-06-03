@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { setProducts } from '../../store/SelectedProducts/SelectedProductsSlice';
 import ProductList from '../ProductList/ProductList';
 import './catalog.css'

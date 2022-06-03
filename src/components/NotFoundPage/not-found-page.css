@@ -1,0 +1,16 @@
+.not-found-page__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.not-found-page-title{
+    margin-top: 200px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #000;
+    font-family: 'Montserrat';
+}
